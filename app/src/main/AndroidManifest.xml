@@ -9,25 +9,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SwitchIcon">
-
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true" />
         <!-- 原MainActivity -->
-        <activity android:name=".MainActivity" />
-
-        <!-- 固定设置一个默认的别名，用来替代原MainActivity -->
-        <activity-alias
-            android:name=".DefaultAliasActivity"
-            android:enabled="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:targetActivity=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
-
-
-        <!-- 别名1 -->
+        <activity android:name=".MainActivity" /> <!-- 别名1 -->
         <activity-alias
             android:name=".Alias1Activity"
             android:enabled="false"
@@ -39,9 +25,19 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity-alias> <!-- 固定设置一个默认的别名，用来替代原MainActivity -->
+        <activity-alias
+            android:name=".DefaultAliasActivity"
+            android:enabled="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity-alias>
-
-
     </application>
 
 </manifest>

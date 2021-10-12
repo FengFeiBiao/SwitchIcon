@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_default"
+    <Button
+        android:id="@+id/btn_default"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:background="#FF6400"
         android:gravity="center"
-        android:text="默认icon"
+        android:text="默认别名"
         android:textColor="@color/white"
         android:textSize="18dp"
         android:textStyle="bold"
@@ -22,11 +21,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <TextView
-        android:id="@+id/tv_alias1"
+    <Button
+        android:id="@+id/btn_alias1"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:background="#FF6400"
         android:gravity="center"
         android:text="别名1"
         android:textColor="@color/white"

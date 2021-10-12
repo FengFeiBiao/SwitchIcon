@@ -1,6 +1,7 @@
 package com.fengfeibiao.switchicon;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -15,20 +16,26 @@ public class MainActivity extends AppCompatActivity implements ForegroundCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //进行app前后台监听
+        //添加app前后台监听
         ForegroundCallbacks.get(this).addListener(this);
 
-        findViewById(R.id.tv_default).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_default).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 position = 0;
+                Intent intent =new Intent(MainActivity.this,MainActivity2.class);
+                intent.putExtra("NAME","默认别名");
+                startActivity(intent);
             }
         });
 
-        findViewById(R.id.tv_alias1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_alias1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 position = 1;
+                Intent intent =new Intent(MainActivity.this,MainActivity2.class);
+                intent.putExtra("NAME","别名1");
+                startActivity(intent);
             }
         });
 
@@ -62,11 +69,12 @@ public class MainActivity extends AppCompatActivity implements ForegroundCallbac
      */
     public void setDefaultAlias() {
         PackageManager packageManager = getPackageManager();
-        packageManager.setComponentEnabledSetting(new ComponentName(this, "com.fengfeibiao.switchicon.DefaultAliasActivity"),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
 
-        packageManager.setComponentEnabledSetting(new ComponentName(this, "com.fengfeibiao.switchicon.Alias1Activity"),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        ComponentName name1 = new ComponentName(this, "com.fengfeibiao.switchicon.DefaultAliasActivity");
+        packageManager.setComponentEnabledSetting(name1, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
+        ComponentName name2 = new ComponentName(this, "com.fengfeibiao.switchicon.Alias1Activity");
+        packageManager.setComponentEnabledSetting(name2, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
     }
 
     /**
@@ -74,10 +82,11 @@ public class MainActivity extends AppCompatActivity implements ForegroundCallbac
      */
     public void setAlias1() {
         PackageManager packageManager = getPackageManager();
-        packageManager.setComponentEnabledSetting(new ComponentName(this, "com.fengfeibiao.switchicon.DefaultAliasActivity"),
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 
-        packageManager.setComponentEnabledSetting(new ComponentName(this, "com.fengfeibiao.switchicon.Alias1Activity"),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+        ComponentName name1 = new ComponentName(this, "com.fengfeibiao.switchicon.DefaultAliasActivity");
+        packageManager.setComponentEnabledSetting(name1, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
+        ComponentName name2 = new ComponentName(this, "com.fengfeibiao.switchicon.Alias1Activity");
+        packageManager.setComponentEnabledSetting(name2, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 }

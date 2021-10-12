@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * 监听App处于前后台
+ * 监听App前后台切换
  */
 public class ForegroundCallbacks implements Application.ActivityLifecycleCallbacks {
     public static final long CHECK_DELAY = 500;

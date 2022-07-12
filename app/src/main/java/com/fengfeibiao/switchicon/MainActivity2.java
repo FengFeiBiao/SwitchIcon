@@ -12,6 +12,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         String name = getIntent().getStringExtra("NAME");
-        ((TextView) findViewById(R.id.btn_name)).setText("点击了"+name);
+        ((TextView) findViewById(R.id.btn_name)).setText("点击"+name);
     }
 }
